@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -13,25 +10,31 @@ public class Main {
                         "achieve", "action", "add", "age", "alphabet",
                         "animal", "Winter", "Spring", "Summer", "Autumn"};
 
-        System.out.println(Arrays.toString(array));
-        System.out.println(array.length + "\n");
 
 
-        Set set = new HashSet();
-        set.addAll(List.of(array));
+        Set set = new HashSet(List.of(array));
         System.out.println(set);
-        System.out.println(set.size() + "\n");
+        System.out.println("Уникальных слов: " + set.size());
 
 
-        System.out.println("2 Task" + "\n");
+        HashMap<String, Integer> hashMap = new HashMap();
+        for (String word: array) {
+            hashMap.put(word, hashMap.getOrDefault(word, 0) + 1);
+        }
+        System.out.println(hashMap + "\n");
+
+
+
+
+        System.out.println("2 Task");
         PhoneBook phoneBook = new PhoneBook();
         phoneBook.add("John", "88005553535");
         phoneBook.add("Anthony", "55557777");
         phoneBook.add("Eugene", "9384570977");
         phoneBook.add("Eugene", "938454357567568");
-        System.out.println("John\n"+phoneBook.get("John")+"\n");
-        System.out.println("Anthony\n"+phoneBook.get("Anthony")+"\n");
-        System.out.println("Eugene\n"+phoneBook.get("Eugene")+"\n");
+        phoneBook.add("Eugene", "938454357567568");
+
+        phoneBook.print();
 
     }
 
